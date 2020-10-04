@@ -1,0 +1,53 @@
+{
+    "name": "Commune",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Support small businesses using our robinhood-like app",
+    "default_locale": "en",
+    "icons": {
+        "128": "/icons/bigger_128.png"
+      },
+    "background": {
+        "scripts": [
+            "jquery/jquery.min.js",
+            "js/backgroundPage.js"
+        ],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "js/popup/popup.html",
+        "default_title": "Support a small business!",
+        "default_icon": {
+            "128": "/icons/bigger_128.png"
+          }
+    },
+    "permissions": [
+        "storage",
+        "contentSettings",
+        "history",
+        "tabs"
+    ],
+    "web_accessible_resources": [
+        "modal-iframe.html",
+        "icons/*.png",
+        "*.jpg",
+        "*.JPG",
+        "*.png",
+        "*.PNG"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jquery/jquery.min.js",
+                "js/content/context.js"
+            ],
+            "css": [
+                "js/contentCSS.css"
+            ]
+        }
+    ],
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://code.jquery.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com; object-src 'self'"
+}
